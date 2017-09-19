@@ -1,4 +1,5 @@
 # Leak report
 
-_Use this document to describe whatever memory leaks you find in `clean_whitespace.c` and how you might fix them. You should also probably remove this explanatory text._
-
+The problem was that result in strip (line 47) was allocated memory with calloc, and never freed it.
+To fix this simply write free(result) after everything else in the funtion but before the return 
+statement.
